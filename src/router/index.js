@@ -9,6 +9,7 @@ import Follow from '../views/Follow.vue'
 import Hot from '../views/Hot.vue'
 import QuestionWaiting from '../views/QuestionWaiting.vue'
 import Login from '../views/Login.vue'
+import RoundTable from"../views/RoundTable.vue"
 
 
 
@@ -53,6 +54,10 @@ const routes = [
   		path:'special/all',
   		component:() => import('../views/Special.vue')
   	},
+	{
+		path:'roundtable/all',
+		component:() => import('../views/RoundTable.vue')
+	},
   	{
   		path:'question/waiting',
   		component:() => import('../views/QuestionWaiting.vue')

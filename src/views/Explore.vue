@@ -2,7 +2,6 @@
 	<div>
 		<div class="container">
 			<div class="head">
-				<img src="" alt="" />
 				<i class="iconfont">&#xe65d;</i>
 				<h2>最新专题</h2>
 			</div>
@@ -28,6 +27,32 @@
 			<div class="topic">
 				<router-link to="/special/all" class="btn"><button class="button-topic">查看更多专题></button></router-link>
 			</div>
+			
+			<div class="head">
+				<i class="iconfont">&#xe604;</i>
+				<h2>圆桌讨论</h2>
+			</div>
+			<div class="row">
+				<div class="roundtable" v-for="(item, index) in roundTable" :key="index">
+					<img :src="item.banner" alt="" />
+					
+					<div class="w-row" >
+						<div class="round-left">
+						<h3>{{item.name }}</h3>
+						<div class="a"></div>
+						<h5 class="concern">{{item.includeCount}}位嘉宾参与|{{item.visitsCount}}人关注</h5>
+						</div>
+						<div class="round-right">
+							<button class="round-button"><h4>关注圆桌</h4></button>
+						</div>
+					</div>
+					<p class="v" style="margin: 30px;">{{item.urlToken }}</p>
+				</div>
+			</div>
+			
+			<div class="topic">
+				<router-link to="/roundtable/all"><button class="button-topic">查看更多圆桌></button></router-link>
+			</div>
 		</div>
 		
 		
@@ -47,17 +72,23 @@ export default {
 			console.log(res);
 			this.specials = res.data.data;
 		});
+		this.axios.get('http://localhost:8080/api/roundTable').then(res => {
+			console.log(res);
+			this.roundTable = res.data.data;
+		});
 	}
 };
 </script>
 
 <style lang="scss" scoped>
 @font-face {
-	font-family: 'iconfont'; /* project id 1616266 */
-	src: url('//at.alicdn.com/t/font_1616266_b8gknsgz736.eot');
-	src: url('//at.alicdn.com/t/font_1616266_b8gknsgz736.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_1616266_b8gknsgz736.woff2') format('woff2'),
-		url('//at.alicdn.com/t/font_1616266_b8gknsgz736.woff') format('woff'), url('//at.alicdn.com/t/font_1616266_b8gknsgz736.ttf') format('truetype'),
-		url('//at.alicdn.com/t/font_1616266_b8gknsgz736.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 1616266 */
+  src: url('//at.alicdn.com/t/font_1616266_v257u928xai.eot');
+  src: url('//at.alicdn.com/t/font_1616266_v257u928xai.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1616266_v257u928xai.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1616266_v257u928xai.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1616266_v257u928xai.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1616266_v257u928xai.svg#iconfont') format('svg');
 }
 .iconfont {
 	font-family: 'iconfont' !important;
@@ -85,7 +116,7 @@ export default {
 }
 .explore {
 	box-shadow: 2px 5px 5px #aaa;
-	width: 46%;
+	width: 48%;
 	margin: 1%;
 	height: 430px;
 	background-color: rgb(255,255,255);
@@ -132,4 +163,51 @@ text-indent:50px;
 	height: 50px;
 	border-radius: 50px;
 }
+.roundtable{
+	box-shadow: 2px 5px 5px #aaa;
+	width: 48%;
+	margin: 1%;
+	height: 430px;
+	background-color: rgb(255,255,255);
+	position: relative;
+}
+.roundtable img {
+	border-radius: 5px;
+	width: 100%;
+	height: 50%;
+}
+.round-left{
+	position: absolute;
+	top: 70px;
+	left: 25px;
+	width: 70%;
+		color: white;
+}
+.a{
+margin-top: 15px;
+	
+	height: 65px;
+	width: 100%;
+}
+.concern{
+	margin-left: 80px;
+		}
+.round-right{
+	position: absolute;
+	top: 160px;
+	right: 0;
+	width: 23%;
+}
+.round-button{
+	width: 90%;
+	border: none;
+	background-color:white;
+	
+	height: 40px;
+	border-radius: 5px;
+	}
+	.round-button h4{
+		color: rgb(30,134,255);
+		
+	}
 </style>

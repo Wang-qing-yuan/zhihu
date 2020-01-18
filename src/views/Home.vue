@@ -13,7 +13,37 @@
 			</div>
 			
 			<div class="container-right">
-				
+				<div class="card">
+					<div class="row">
+					<div class="w-col-4">
+						<i class="iconfont">&#xe636;</i>
+						<h4>写回答</h4>
+					</div>
+					<div class="w-col-4">
+						<i class="iconfont">&#xe618;</i>
+						<h4>写文章</h4>
+					</div>
+					<div class="w-col-4">
+						<i class="iconfont">&#xe7ce;</i>
+						<h4>写想法</h4>
+					</div>
+					</div>
+					
+					<div class="row">
+					<div class="w-col-4">
+						<i class="iconfont">&#xe601;</i>
+						<h4>发视频</h4>
+					</div>
+					<div class="w-col-4">
+						<i class="iconfont">&#xe600;</i>
+						<h4>稍后答</h4>
+					</div>
+					<div class="w-col-4"><i class="iconfont">&#xe632;</i>
+					<h4>草稿箱</h4>
+					</div>
+					</div>
+					
+				</div>
 			</div>
 			
 			
@@ -40,6 +70,26 @@
 </script>
 
 <style lang="scss" scoped>
+	@font-face {
+	  font-family: 'iconfont';  /* project id 1617190 */
+	  src: url('//at.alicdn.com/t/font_1617190_x19khpo8msq.eot');
+	  src: url('//at.alicdn.com/t/font_1617190_x19khpo8msq.eot?#iefix') format('embedded-opentype'),
+	  url('//at.alicdn.com/t/font_1617190_x19khpo8msq.woff2') format('woff2'),
+	  url('//at.alicdn.com/t/font_1617190_x19khpo8msq.woff') format('woff'),
+	  url('//at.alicdn.com/t/font_1617190_x19khpo8msq.ttf') format('truetype'),
+	  url('//at.alicdn.com/t/font_1617190_x19khpo8msq.svg#iconfont') format('svg');
+	}
+	.iconfont{
+	    font-family:"iconfont" !important;
+	    font-size:17px;font-style:normal;
+	    -webkit-font-smoothing: antialiased;
+	    -webkit-text-stroke-width: 0.1px;
+	    -moz-osx-font-smoothing: grayscale;
+		color: darkgray;}
+	.row{
+		display: flex;
+		flex-wrap: wrap;
+	}
 	.container{
 		background-color: rgb(246,246,246);
 		margin-top: 15px;
@@ -72,11 +122,25 @@
 		color: black;
 	}
 	.container-right{
-		background-color: rgb(255,255,255);
+		
 		width: 30%;
 		
 		height: 500px;
 		margin-left: 5px;
+	}
+	.card{
+		background-color: rgb(255,255,255);
+		
+	}
+	.w-col-4{
+		text-align: center;
+		height: 100px;
+		position: relative;
+		top: 30px;
+	}
+	.w-col-4 h4{
+		font-family:serif;
+		margin-top: 10px;
 	}
 </style>
 

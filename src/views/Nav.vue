@@ -29,8 +29,6 @@
 		width: 100%;
 		display: flex;
 		align-items: center;
-		box-shadow: 2px 5px 5px #aaa;
-		align-items: center;
 		
 		
 	}
