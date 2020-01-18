@@ -61,6 +61,7 @@
 		     left: 7%;
 		width: 80%;
 		border-radius: 10px;
+		
 	
 		
 		

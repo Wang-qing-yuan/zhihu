@@ -1,3 +1,4 @@
+
 <template>
 	<div>
 		<div class="container">
@@ -34,7 +35,12 @@
 			</div>
 			<div class="row">
 				<div class="roundtable" v-for="(item, index) in roundTable" :key="index">
-					<img :src="item.banner" alt="" />
+					<div class="w-row">
+						<div class="shadow">
+							</div>
+							<img :src="item.banner" alt="" />
+						</div>
+					
 					
 					<div class="w-row" >
 						<div class="round-left">
@@ -173,15 +179,29 @@ text-indent:50px;
 }
 .roundtable img {
 	border-radius: 5px;
-	width: 100%;
+	width: 50%;
 	height: 50%;
+	position: absolute;
+	right: 0;
+	
+	
+}
+.shadow{
+	z-index: 10;
+	width: 100%;
+	height: 220px;
+	text-align: center;
+	background-image: linear-gradient(to right,#e66465, #9198e5,rgba(255,255,255,0));
+	
+	
 }
 .round-left{
 	position: absolute;
 	top: 70px;
 	left: 25px;
 	width: 70%;
-		color: white;
+	color: white;
+	z-index: 11;
 }
 .a{
 margin-top: 15px;
