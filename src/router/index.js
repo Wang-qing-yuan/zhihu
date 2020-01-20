@@ -9,7 +9,8 @@ import Follow from '../views/Follow.vue'
 import Hot from '../views/Hot.vue'
 import QuestionWaiting from '../views/QuestionWaiting.vue'
 import Login from '../views/Login.vue'
-import RoundTable from"../views/RoundTable.vue"
+import RoundTable from '../views/RoundTable.vue'
+import Favorite from '../views/Favorite.vue'
 
 
 
@@ -57,6 +58,10 @@ const routes = [
 	{
 		path:'roundtable/all',
 		component:() => import('../views/RoundTable.vue')
+	},
+	{
+		path:'favorite/all',
+		component:() => import('../views/Favorite.vue')
 	},
   	{
   		path:'question/waiting',

@@ -1,10 +1,15 @@
 <template>
 	<div>
+		
+		
 			<div class="topic-head">
 				<i class="iconfont">&#xe65d;</i>
 				<h2 style="margin-top: 5px;">所有专题</h2>
 				<h4>共有489个专题</h4>
 			</div>
+			
+			<div class="con-home">
+				<div class="con-left"></div>
 			<div class="container">
 				<div class="row" v-for="(item,index) in specials" :key="index">
 					<div class="left"><img :src="item.banner" alt=""></div>
@@ -21,6 +26,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="con-right">
+											<a href="#top"><i class="iconfont"style="font-size:40px;margin-left: 70px; position: sticky;
+			top: 500px;">&#xe60c;</i></a>
+						</div>
+			</div>
 		</div>
 </template>
 
@@ -33,9 +43,10 @@
 			};
 		},
 		created() {
-			this.axios.get('http://localhost:8080/api/special/all').then(res =>{
-				console.log(res);
-				this.specials = res.data.data;
+			this.axios.get(this.$store.state.baseUrl + '/special/all').then(res => {
+						console.log(res);
+						this.specials = res.data.data;
+				
 			});
 		}
 	};
@@ -59,6 +70,7 @@
 		color: blue;
 		margin: 10px;
 	}
+	
 	.topic-head{
 		display: flex;
 		background-color: rgb(255,255,255);
@@ -71,6 +83,16 @@
 		padding-top: 8px;
 		margin-left: 20px;
 		color: darkgray;
+	}
+	.con-home{
+		display: flex;
+		width: 100%;
+	}
+	.con-left{
+		width: 10%;
+	}
+	.con-right{
+		width: 10%;
 	}
 	.container{
 		display: block;
