@@ -5,7 +5,10 @@
 		<div class="container">
 			
 			<div class="head">
-				<i class="iconfont">&#xe65d;</i>
+				<svg class="Zi Zi--LabelSpecial" fill="currentColor" viewBox="0 0 24 24" width="36" height="36" color="rgb(0,132,255)">
+					<path d="M7.667 3.667h11.466a1.2 1.2 0 0 1 1.2 1.2v13.066a2.4 2.4 0 0 1-2.4 2.4H6.467V4.867a1.2 1.2 0 0 1 1.2-1.2zM4.2 9.619h1.689v10.714H5.4a2.4 2.4 0 0 1-2.4-2.4V10.82a1.2 1.2 0 0 1 1.2-1.2zm5.178-2.38a.6.6 0 0 0-.6.6v.585a.6.6 0 0 0 .6.6h8.044a.6.6 0 0 0 .6-.6v-.586a.6.6 0 0 0-.6-.6H9.378zm0 3.57a.6.6 0 0 0-.6.6v.586a.6.6 0 0 0 .6.6h8.044a.6.6 0 0 0 .6-.6v-.585a.6.6 0 0 0-.6-.6H9.378zm0 3.572a.6.6 0 0 0-.6.6v.586a.6.6 0 0 0 .6.6h4.578a.6.6 0 0 0 .6-.6v-.586a.6.6 0 0 0-.6-.6H9.378z" fill-rule="evenodd">
+					</path>
+					</svg>
 				<h2>最新专题</h2>
 			</div>
 			<div class="row">
@@ -32,7 +35,10 @@
 			</div>
 
 			<div class="head">
-				<i class="iconfont">&#xe604;</i>
+				<svg class="Zi Zi--LabelRoundtable" fill="currentColor" viewBox="0 0 24 24" width="36" height="36" color="rgb(0,132,255)">
+					<path d="M12 21.333a9.333 9.333 0 1 1 0-18.666 9.333 9.333 0 0 1 0 18.666zm-.66-11.287c.332.385.609.77.775 1.21.055-.054.665-.99.72-1.706.055-.385.126-1.616-.443-2.367-.443-.496-1.219-.77-1.884-.55a1.788 1.788 0 0 0-1.33 2.036c.887.276 1.607.771 2.161 1.377zm-1.33 1.541c.443-.055.941-.11 1.44 0 0-.055-.484-.936-1.108-1.486-.665-.496-1.33-.973-2.216-.771-.72.11-1.723.77-1.55 2.092.11.606.553 1.101 1.162 1.321.61-.605 1.44-1.046 2.272-1.156zm2.714.165c.056 0 1.164.055 1.828-.165.72-.275 1.412-.68 1.773-1.541.11-.276.23-1.248-.443-1.872-.72-.716-1.717-.716-2.438-.165.222.825.063 1.966-.11 2.532-.103.348-.333.88-.61 1.211zm-1.44.55c-.056 0-1.33.056-1.828.221-.72.275-1.447.668-1.773 1.541-.11.276-.21 1.26.443 1.872.665.661 1.718.661 2.438.11-.295-.811-.166-1.761.055-2.477.166-.495.388-.936.665-1.266zm5.041-.99c-.665.605-1.44.99-2.327 1.211-.443.055-.941.11-1.44 0 0 .055.554.991 1.108 1.431.665.496 1.385.771 2.216.771.72-.11 1.678-.692 1.551-2.092-.055-.605-.554-1.101-1.108-1.321zm-3.656 2.642a3.475 3.475 0 0 1-.776-1.156c-.055.055-.665.991-.72 1.707-.055.385-.101 1.506.499 2.312.443.496 1.218.77 1.883.55.887-.275 1.496-1.1 1.33-2.036a5.38 5.38 0 0 1-2.216-1.377z" fill-rule="evenodd">
+				</path>
+				</svg>
 				<h2>圆桌讨论</h2>
 			</div>
 			<div class="row">
@@ -98,18 +104,18 @@
 				<div class="w-row" style="border-bottom: 1px solid lightgray;padding-bottom: 10px;">
 				<img :src="item.creatorAvatar" alt="" style="border-radius: 5px;"/>
 				<h4 style="padding: 5px;">{{item.creatorName}}</h4>
-				<h4 style="color: darkgray; padding: 5px;font-weight: lighter;">创建|{{item.followers}}人关注</h4>
+				<h5 style="color: darkgray; padding: 7px;font-weight:400;">创建|{{item.followers}}人关注</h5>
 				</div>
 				
 				
 				<h4 style="margin-top: 20px;">{{item.questionTitle}}</h4>
-				<h4 style="font-weight: normal;
-				text-overflow: -o-ellipsis-lastline;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			display: -webkit-box;
-			-webkit-line-clamp: 1;
-			-webkit-box-orient: vertical;">{{item.answerAuthorName}}:{{item.answerContent}}</h4>
+				<h4 style="font-weight: normal;text-overflow: -o-ellipsis-lastline;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;">{{item.answerAuthorName}}:{{item.answerContent}}</h4>
+				
 			<div class="w-row">
 				<h5 style="background-color: rgb(246,246,246);color: darkgray;font-weight: lighter;width: 35px;padding: 3px;">回答</h5>
 				<h5 style="font-weight: lighter;padding: 5px;color: darkgray;">{{item.voteupCount}}赞同·{{item.commentCount}}评论</h5>
@@ -173,23 +179,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@font-face {
-	font-family: 'iconfont'; /* project id 1616266 */
-	src: url('//at.alicdn.com/t/font_1616266_v257u928xai.eot');
-	src: url('//at.alicdn.com/t/font_1616266_v257u928xai.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_1616266_v257u928xai.woff2') format('woff2'),
-		url('//at.alicdn.com/t/font_1616266_v257u928xai.woff') format('woff'), url('//at.alicdn.com/t/font_1616266_v257u928xai.ttf') format('truetype'),
-		url('//at.alicdn.com/t/font_1616266_v257u928xai.svg#iconfont') format('svg');
-}
-.iconfont {
-	font-family: 'iconfont' !important;
-	font-size: 30px;
-	font-style: normal;
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-stroke-width: 0.2px;
-	-moz-osx-font-smoothing: grayscale;
-	color: blue;
-	margin: 10px;
-}
 .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -336,4 +325,14 @@ export default {
 	box-shadow: 2px 5px 10px #aaa;
 	background-color: rgb(255,255,255);
 }
+.content{
+	font-weight: normal;
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
 </style>
+

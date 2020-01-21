@@ -42,9 +42,9 @@
 						</h4>
 						<div class="w-row">
 							<h5 style="background-color: rgb(246,246,246);color: darkgray;font-weight: 200;padding: 2px;border-radius: 3px;">回答</h5>
-							<h5 style="font-weight: 200;color: darkgray;padding: 3px;margin-left: 10px;">{{item.voteupCount}}赞同·{{item.voteupCount}}评论</h5>
+							<h5 style="font-weight: 200;color: darkgray;padding: 3px;margin-left: 10px;">{{ item.voteupCount }}赞同·{{ item.voteupCount }}评论</h5>
 						</div>
-						<h4 style="color: rgb(133,144,166);font-weight: 300;margin-top: 15px;">已收藏{{item.totalCount}}条内容></h4>
+						<h4 style="color: rgb(133,144,166);font-weight: 300;margin-top: 15px;">已收藏{{ item.totalCount }}条内容></h4>
 					</div>
 				</div>
 			</div>
@@ -58,15 +58,64 @@ export default {
 	name: 'hot',
 	data() {
 		return {
-			favorites: []
+			favorites: [],
+			currentPage: 1,
+			count: 9,
+			scroll: ''
 		};
 	},
 	created() {
-		this.axios.get(this.$store.state.baseUrl + '/favorite/all').then(res => {
-			console.log(res);
-			this.favorites = res.data.data;
-		});
-	}
+			this.axios({
+				method: 'post',
+				url: 'http://localhost:8080/api/favorite/page',
+				params: {
+					count: this.count,
+					currentPage: this.currentPage
+				}
+			}).then(res => {
+				console.log(res.data.data);
+				this.favorites = res.data.data;
+				console.log(this.favorites.length);
+			});
+		},
+		methods: {
+			loadMore() {
+				this.currentPage = this.currentPage + 1;
+				this.axios({
+					method: 'post',
+					url: 'http://localhost:8080/api/favorite/page',
+					params: {
+						count: this.count,
+						currentPage: this.currentPage
+					}
+				}).then(res => {
+					console.log(res.data.data);
+					let temp = [];
+					temp = res.data.data;
+					for (var i = 0; i < temp.length; i++) {
+						this.favorites.splice(this.currentPage * this.count, 0, temp[i]);
+					}
+					console.log(this.favorites.length);
+				});
+			},
+			scrollDs() {
+				//变量scrollTop是滚动条滚动时，距离顶部的距离
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				//变量windowHeight是可视区的高度
+				var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+				//变量scrollHeight是滚动条的总高度
+				var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+				//滚动条到底部的条件
+				if (scrollTop + windowHeight > scrollHeight -100) {
+					//到了这个就可以进行业务逻辑加载后台数据了
+					console.log('到了底部');
+					this.loadMore();
+				}
+			}
+		},
+		mounted() {
+			window.addEventListener('scroll', this.scrollDs,true);
+		}
 };
 </script>
 
@@ -106,7 +155,7 @@ export default {
 	color: rgb(0, 132, 255);
 	height: 35px;
 }
-.right{
+.right {
 	width: 70%;
 }
 </style>
