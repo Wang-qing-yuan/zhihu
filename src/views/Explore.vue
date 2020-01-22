@@ -139,13 +139,32 @@
 				<router-link to="/favorite/all"><button class="button-topic">查看更多收藏夹></button></router-link>
 			</div>
 			
+			<div class="head">
+				<svg class="Zi Zi--EditCircle" fill="currentColor" viewBox="0 0 24 24" width="36" height="36" color="rgb(0,132,255)"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm4.043-15.524a.745.745 0 0 0-1.053.017l-6.857 7.071 2.237 2.17 6.857-7.071a.743.743 0 0 0-.016-1.052l-1.168-1.135zm-9.028 9.476l-.348 1.381 1.37-.39 1.274-.36-1.973-1.916-.323 1.285z" fill-rule="evenodd"></path></svg>
+				<h2>专栏</h2>
+			</div>
+			<div class="row">
+				<div class="column" v-for="(item, index) in columns" :key="index">
+				<img :src="item.imageUrl" onclick="location.href= 'https://zhuanlan.zhihu.com/jyzyx0'" />
+				<h3 class="title">{{item.title}}</h3>
+				<h5 class="follower">{{item.followers}}关注·{{item.articlesCount}}文章</h5>
+				<h4 class="description">{{item.description}}</h4>
+				<button class="column-button">进入专栏</button>
+				</div>
+				
+			</div>
 			
+			<div class="topic">
+				<router-link to="/column"><button class="button-topic">查看更多专栏></button></router-link>
+			</div>
+			
+			<div class="end"><h5>刘看山·知乎指南·知乎协议·应用·工作·联系我们@2020知乎</h5></div>
 			
 		</div>
 		
 		<div class="con-right">
-										<a href="#top"><i class="iconfont"style="font-size:40px;margin-left: 70px; position: sticky;
-		top: 500px;">&#xe60c;</i></a>
+										<!-- <a href="#top"><i class="iconfont"style="font-size:40px;margin-left: 70px; position: sticky;
+		top: 500px;">&#xe60c;</i></a> -->
 					</div>
 					</div>
 	</div>
@@ -158,7 +177,8 @@ export default {
 		return {
 			specials: [],
 			roundTables:[],
-			favorites:[]
+			favorites:[],
+			columns:[]
 		};
 	},
 	created() {
@@ -173,6 +193,10 @@ export default {
 		this.axios.get(this.$store.state.baseUrl + '/favorite').then(res => {
 						console.log(res);
 						this.favorites = res.data.data;
+		});
+		this.axios.get(this.$store.state.baseUrl + '/columns').then(res => {
+						console.log(res);
+						this.columns = res.data.data;
 		});
 	}
 };
@@ -334,5 +358,65 @@ export default {
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
 }
+.column{
+	width: 23%;
+	background-color: white;
+	margin: 10px;
+	box-shadow: 2px 5px 10px #aaa;
+	text-align: center;
+	border-radius: 5px;
+}
+.column img{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width:80px;
+	height:80px;
+	border-radius: 200px;
+}
+.column .title{
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+.column .follower{
+	color: darkgray;
+	font-weight: 400;
+}
+.column .description{
+	font-weight: 400;
+	margin: 20px;
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.column-button{
+	background-color: rgb(235,245,255);
+	color: rgb(0,132,255);
+	padding: 5px;
+	border: none;
+	font-weight: 600;
+	width: 100px;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	height: 35px;
+}
+.end{
+	background-color: rgb(246,246,246);
+	text-align: center;
+	margin-bottom: 100px;
+	
+}
+.end h5{
+	color: rgb(133,144,166);
+	font-weight: 400;
+	letter-spacing:2px
+}
+
 </style>
 

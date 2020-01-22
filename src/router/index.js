@@ -11,6 +11,7 @@ import QuestionWaiting from '../views/QuestionWaiting.vue'
 import Login from '../views/Login.vue'
 import RoundTable from '../views/RoundTable.vue'
 import Favorite from '../views/Favorite.vue'
+import Column from '../views/Column.vue'
 
 
 
@@ -72,7 +73,11 @@ const routes = [
     {
     	path:'/login',
     	component:Login
-    }
+    },
+	{
+		path:'/column',
+		component:Column
+	}
   ]
 const router = new VueRouter({
   routes
