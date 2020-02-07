@@ -30,7 +30,7 @@
 				
 				<div class="row">
 					<div class="column" v-for="(item, index) in columns" :key="index">
-					<img :src="item.imageUrl" onclick="location.href= 'https://zhuanlan.zhihu.com/jyzyx0'" />
+				<a :href="item.url" class="buttomm" @click="go(item.url)"><img :src="item.imageUrl" /></a>
 					<h3 class="title">{{item.title}}</h3>
 					<h4 class="description">{{item.description}}</h4>
 					<h5 class="follower">{{item.followers}}人关注|{{item.articlesCount}}篇文章</h5>
@@ -93,6 +93,7 @@ export default {
 				this.columns = res.data.data;
 				console.log(this.columns.length);
 			});
+			
 		}
 	}
 };
@@ -300,6 +301,7 @@ export default {
 		           linear-gradient(white 14px,transparent 0),
 		           linear-gradient(90deg,black 1px,transparent 0);
 		        background-size:10px 15px,15px 15px;position: absolute;
-				z-index: 1;opacity: 0.1;
+				z-index: 1;
+				opacity: 0.1;
 	  }
 </style>

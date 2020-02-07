@@ -67,6 +67,17 @@ ul {
 	justify-content: center;
 	align-items: center;
 }
+/*行内块级显示*/
+			.d-inline-block{
+				display: inline-block;
+			}
+			/*水平居中*/
+			.t-center{
+				text-align: center;
+			}
+			.row{
+				display: flex;
+			}
 
 /* flex横向布局的对齐,横向左对齐，纵向居中 */
 .w-fx-left {
