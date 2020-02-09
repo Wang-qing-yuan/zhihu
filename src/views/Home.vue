@@ -2,10 +2,9 @@
 	<div>
 		<div class="container">
 			
-			
+			<div class="right"></div>
 			
 			<div class="container-home">
-				
 				<div class="container-left">
 					<img class="tu" src="https://static.zhihu.com/heifetz/assets/NewYear2020Banner.e5ccc19d.png">
 				<ul class="navbar">
@@ -213,30 +212,56 @@
 				</div>
 			</div>
 			
-			
-			</div>
-			
 			<div class="right">
-								<a href="#top"><i class="iconfont"style="font-size:40px;margin-left: 80px; position: sticky;
-  top: 500px;">&#xe60c;</i></a>
+				<button class="goto-top dark-grey" @click="backToTop" v-show="btnFlag">
+							<svg class="grey-icon" title="回到顶部" viewBox="0 0 24 24" width="24" height="24">
+								<path
+									d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"
+								></path>
+							</svg>
+						</button>
 			</div>
+			
+			</div>
+			
 			</div>
 		</div>
 </template>
 
 <script>
-	export default{
-		name:'special',
-		data(){
-			return{
-				specials:[]
+	export default {
+		name: 'home',
+		data() {
+			return {
+				btnFlag: false
 			};
 		},
-		created() {
-			this.axios.get('http://localhost:8080/api/special/all').then(res =>{
-				console.log(res);
-				this.specials = res.data.data;
-			});
+		created() {},
+		mounted() {
+			// window对象，所有浏览器都支持window对象。它表示浏览器窗口，监听滚动事件
+			window.addEventListener('scroll', this.scrollToTop);
+		},
+		methods: {
+			backToTop() {
+				//加定时器，平滑过渡回到顶部
+				let timer = setInterval(() => {
+					let ispeed = Math.floor(-this.scrollTop / 5);
+					document.documentElement.scrollTop = document.body.scrollTop = this.scrollTop + ispeed;
+					if (this.scrollTop === 0) {
+						clearInterval(timer);
+					}
+				}, 16);
+			},
+			// 计算距离顶部的高度，当高度大于60显示回顶部图标，小于60则隐藏
+			scrollToTop() {
+				let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				this.scrollTop = scrollTop;
+				if (this.scrollTop > 800) {
+					this.btnFlag = true;
+				} else {
+					this.btnFlag = false;
+				}
+			}
 		}
 	};
 </script>
@@ -283,8 +308,7 @@
 	}
 	.container-home{
 		
-		display: block;
-		    margin: auto;
+		
 		    width: 80%;
 			border-radius: 5px;
 			display: flex;
@@ -429,5 +453,16 @@
 	.lan:hover{
 		color: rgb(23,81,153);
 	}
+	.goto-top {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	width: 40px;
+	height: 40px;
+	background: #fff;
+	border: 1px solid #eee;
+	border-radius: 3px;
+	cursor: pointer;
+}
 </style>
 
